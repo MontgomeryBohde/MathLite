@@ -44,3 +44,31 @@ double arr[] = {3.0, 0.0, 1.0, 0.0, 2.0}; // 2x^4 + x^2 + 3
 polynomial::Polynomial p1(4, arr);
 std::cout << p1.integral(-5.0, 5.0) << std::endl; // 2613.33
 ```
+## Matrix Basics
+#### Instantiation
+You can create a matrix in one of three ways, you can initialize an empty N x M matrix, an N x M matrix filled with values from an array of double, or an N x M matrix filled with a default value.
+```
+double arr[] = {1, 2, 3, 4, 5, 6};
+matrix::Matrix m1(2, 3, arr);
+matrix::Matrix m2(2, 3);
+matrix::Matrix m3(2, 3, 0.0);
+```
+#### Functionality
+The Matrix Library is a quite extensive Linear Algebra Library and has functions for scalar arithmetic, Matrix addition and subtraction, Matrix Multiplication, Matrix Augmentation, Matrix Exponentation, Matrix Transposition, calculating the determinant of a Matrix, finding the Reduced Row Echelon Form of a Matrix, finding the rank of a Matrix, finding the inverse of a Matrix, and more. See the source code for full documentation. 
+#### Element Access
+You can get the element in the i-th row and j-th column simply by using ().
+````
+double arr[] = {1, 2, 3, 4, 5, 6};
+matrix::Matrix mat(2, 3, arr);
+mat(0, 1); // 2
+mat(3, 1); // 6
+````
+#### Printing
+You can easily print a nicely formated version of a Matrix to standard output by calling the .print() method
+````
+double arr[] = {1, 2, 3, 4, 5, 6};
+matrix::Matrix mat(2, 3, arr);
+mat.print();
+// [1.0000e+00 2.0000e+00 3.0000e+00 ]
+// [4.0000e+00 5.0000e+00 6.0000e+00 ]
+````
