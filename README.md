@@ -1,5 +1,5 @@
 # MathLite
-MathLite is a lightweight header-only C++ Math Library with classes for Matricies, Linear Algebra, and Polynomials, including Least Squares Regression and Root Finding Algorithims
+MathLite is a lightweight header-only C++ Math Library with classes for Matricies, Linear Algebra, and Polynomials, including Least Squares Regression, Root Finding Algorithims, and Calculus
 
 ## Installation Instructions
 As MathLite is a header-only Library it requires no installation or external libraries, you can simply download or copy/paste the files into your working directory and #include them. 
