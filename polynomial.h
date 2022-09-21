@@ -469,7 +469,8 @@ namespace polynomial{
                 right_bounds.push((double) std::numeric_limits<long int>::max());
 
                 // minimum width of an interval, this can be adjusted, lower precision = faster
-                const double precision = 1e-2;
+                const double budan_precision = 1e-2;
+                const double newton_precision = 1e-10;
 
                 while(!left_bounds.empty()){
                     double left = left_bounds.top();
@@ -499,9 +500,9 @@ namespace polynomial{
                         // no sign switches in the interval, no roots
                         continue;
                     }else if (s == 1){ // one root in the interval means it must be real, but stil want to decrease interval
-                        if (right - left < precision){
+                        if (right - left < budan_precision){
                             // interval is small enough, we can add to the list of root regions
-                            roots[roots_idx] = newtonRaphson((left + right) / 2.0, 1e-10);
+                            roots[roots_idx] = newtonRaphson((left + right) / 2.0, newton_precision);
                             roots_idx++;
                         }else{
                             // interval is too large, split it in half and try again
@@ -512,7 +513,7 @@ namespace polynomial{
                             continue;
                         }
                     }else if (s == 2){
-                        if (right - left < precision){ // complex roots occur in pairs, this is probably a complex root
+                        if (right - left < budan_precision){ // complex roots occur in pairs, this is probably a complex root
                             continue;
                         }else{ // split interval in two and add to stack
                             left_bounds.push(left);
@@ -546,7 +547,7 @@ namespace polynomial{
                 }
                 return result;
             }
-            Polynomial indef_integral(double lower_bound = 0.0){
+            Polynomial integral(double lower_bound = 0.0){
                 /* Returns the indefinite integral of the polynomial 
                  * @param lower_bound allows the user to specify a lower bound for the integral,
                  * which shifts the polynomial by that amount, such that the integral evaluated at
@@ -560,7 +561,7 @@ namespace polynomial{
                 result.coef[0] = -this->operator()(lower_bound); // shift the integral by the lower bound
                 return result;
             }
-            double def_integral(double lower_bound, double upper_bound){
+            double integral(double lower_bound, double upper_bound){
                 /* Returns the definite integral of the polynomial 
                  * @param lower_bound: the lower bound of the integral
                  * @param upper_bound: the upper bound of the integral
