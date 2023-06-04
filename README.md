@@ -15,7 +15,7 @@ Secondly, you can fit a polynomial to a dataset using [Least Squares Regression]
 ```
 vector<double> x = {1.0, 2.0, 5.0, 10.0, 15.0};
 vector<double> y = {1.0, 8.0, 125.0, 1000.0, 3375.0};
-polynomial::Polynomial p(x, y, 3); // x^3
+polynomial::Polynomial<double> p(x, y, 3); // x^3
 ```
 #### Evaluation
 To evaluate a Polynomial at a specific point, you can just use ()
