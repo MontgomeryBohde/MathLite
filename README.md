@@ -30,7 +30,7 @@ The Polynomial class has every type of arithmetic you could think of, including 
 The Polynomial class has a root finding algorithim built in. It uses a combination of the [Budan-Fourier Theorem](https://www.tandfonline.com/doi/pdf/10.1080/00029890.1943.11991462?needAccess=true) and the [Newton-Raphson Method](https://web.mit.edu/10.001/Web/Course_Notes/NLAE/node6.html) to approximate Polynomial roots to arbitrary precision. The value of the precision can be easily changed by modifying the source code, but the default precision is 1e-10, which should be sufficient for any use case. 
 ```
 vector<double> coefs = {-0.1, 0, 1.89, 0.0, -2.9, 0.0, 10.1, -9.22};
-polynomial::Polynomial p1(coefs);
+polynomial::Polynomial<double> p1(coefs);
 vector<double> roots = p1.roots();
 for (auto root: roots){
     std::cout << root << " ";
@@ -41,7 +41,7 @@ for (auto root: roots){
 The Polynomial class has methods for finding the derivative of a polynomial, finding the indefinte integral starting at a lower bound, and definite integration from lower to upper bounds.
 ```
 vector<double> coefs = {3.0, 0.0, 1.0, 0.0, 2.0}; // 2x^4 + x^2 + 3
-polynomial::Polynomial p1(4, coefs);
+polynomial::Polynomial<double> p1(4, coefs);
 std::cout << p1.integral(-5.0, 5.0); // 2613.33
 ```
 ## Matrix Basics
